@@ -1,0 +1,28 @@
+
+第三章 银联
+======================
+
+
+2.1 查询EISS处理时间
+--------------------------
+查询条件：某个时间范围内，报BCSS有超时，可查询EISS处理总时长
+查询语句::
+
+	select F2, tran_time,tran_code, extract(second from END-BEGIN), F39, ap_ret_code, ap_ret_msg  
+	from 
+	(select F2, tran_time,tran_code, F39, ap_ret_code, ap_ret_msg,
+	to_timestamp(SEND_TIME,'hh24:mi:ss.ff') SEND,  to_timestamp(BEGIN_TIME,'hh24:mi:ss.ff') BEGIN,
+	to_timestamp(END_TIME,'hh24:mi:ss.ff') END,to_timestamp(RECV_TIME,'hh24:mi:ss.ff') RECV
+	FROM 
+	  BCSS01.BCSS_JOURNAL_SW partition(P_20180719)
+	where 
+	substr(tran_time, 1, 6)>'123000' and
+	substr(tran_time, 1, 6)<'125200' and
+	F2 in ('6259063493613759', '6259073348244593');
+
+
+
+1.2 ttjy
+---------------------
+
+bhkhkhg。

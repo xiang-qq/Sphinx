@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
+  <title>第三章 EISS &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
   
 
   
@@ -27,7 +27,8 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="?????? ????" href="yinlian.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -63,7 +64,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -81,11 +82,15 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="jcb.html">第一章 JCB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kuaijie_zhifu.html">第二章 快捷支付</a></li>
-<li class="toctree-l1"><a class="reference internal" href="yinlian.html">第三章 银联</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eiss.html">第三章 EISS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kuaijie_zhifu.html">?ڶ??? ???֧??</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yinlian.html">?????? ????</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第三章 EISS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1.1 查询EISS处理时间</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ttjy">1.2 ttjy</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -131,12 +136,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Search</li>
+      <li>第三章 EISS</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/eiss.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -148,24 +155,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="eiss">
+<h1>第三章 EISS<a class="headerlink" href="#eiss" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>1.1 查询EISS处理时间<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>查询条件：某个时间范围内，报BCSS有超时，可查询EISS处理总时长
+查询语句:</p>
+<p>select F2, tran_time,tran_code, extract(second from END-BEGIN), F39, ap_ret_code, ap_ret_msg
+from
+(select F2, tran_time,tran_code, F39, ap_ret_code, ap_ret_msg,
+to_timestamp(SEND_TIME,’hh24:mi:ss.ff’) SEND,  to_timestamp(BEGIN_TIME,’hh24:mi:ss.ff’) BEGIN,
+to_timestamp(END_TIME,’hh24:mi:ss.ff’) END,to_timestamp(RECV_TIME,’hh24:mi:ss.ff’) RECV
+FROM</p>
+<blockquote>
+<div>BCSS01.BCSS_JOURNAL_SW partition(P_20180719)</div></blockquote>
+<p>where
+substr(tran_time, 1, 6)&gt;‘123000’ and
+substr(tran_time, 1, 6)&lt;‘125200’ and
+F2 in (‘6259063493613759’, ‘6259073348244593’);</p>
+</div>
+<div class="section" id="ttjy">
+<h2>1.2 ttjy<a class="headerlink" href="#ttjy" title="Permalink to this headline">¶</a></h2>
+<p>bhkhkhg。</p>
+</div>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="yinlian.html" class="btn btn-neutral" title="?????? ????" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -205,7 +231,6 @@
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/searchtools.js"></script>
 
   
 
@@ -215,14 +240,7 @@
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
-   
-
+  </script> 
 
 </body>
 </html>
