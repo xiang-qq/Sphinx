@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
+  <title>第三章 hyhawehfawhefkahewfa &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
   
 
   
@@ -27,7 +26,7 @@
 
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="#" />
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
 
   
@@ -87,7 +86,6 @@
 <li class="toctree-l1"><a class="reference internal" href="kuaijie_zhifu.html">第二章 快捷支付</a></li>
 <li class="toctree-l1"><a class="reference internal" href="yinlian.html">第三章 银联</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eiss.html">第三章 EISS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bsdkuapingzhifu.html">第五章 北师大跨屏支付</a></li>
 </ul>
 
             
@@ -133,12 +131,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+      <li>第三章 hyhawehfawhefkahewfa</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/bsdkuaipingzhifu.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -150,11 +150,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="hyhawehfawhefkahewfa">
+<h1>第三章 hyhawehfawhefkahewfa<a class="headerlink" href="#hyhawehfawhefkahewfa" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="eiss">
+<h2>2.1 查询EISS处理时间<a class="headerlink" href="#eiss" title="Permalink to this headline">¶</a></h2>
+<p>查询条件：某个时间范围内，报BCSS有超时，可查询EISS处理总时长
+查询语句:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">F2</span><span class="p">,</span> <span class="n">tran_time</span><span class="p">,</span><span class="n">tran_code</span><span class="p">,</span> <span class="n">extract</span><span class="p">(</span><span class="n">second</span> <span class="kn">from</span> <span class="nn">END</span><span class="o">-</span><span class="n">BEGIN</span><span class="p">),</span> <span class="n">F39</span><span class="p">,</span> <span class="n">ap_ret_code</span><span class="p">,</span> <span class="n">ap_ret_msg</span>
+<span class="kn">from</span>
+<span class="p">(</span><span class="n">select</span> <span class="n">F2</span><span class="p">,</span> <span class="n">tran_time</span><span class="p">,</span><span class="n">tran_code</span><span class="p">,</span> <span class="n">F39</span><span class="p">,</span> <span class="n">ap_ret_code</span><span class="p">,</span> <span class="n">ap_ret_msg</span><span class="p">,</span>
+<span class="n">to_timestamp</span><span class="p">(</span><span class="n">SEND_TIME</span><span class="p">,</span><span class="s1">&#39;hh24:mi:ss.ff&#39;</span><span class="p">)</span> <span class="n">SEND</span><span class="p">,</span>  <span class="n">to_timestamp</span><span class="p">(</span><span class="n">BEGIN_TIME</span><span class="p">,</span><span class="s1">&#39;hh24:mi:ss.ff&#39;</span><span class="p">)</span> <span class="n">BEGIN</span><span class="p">,</span>
+<span class="n">to_timestamp</span><span class="p">(</span><span class="n">END_TIME</span><span class="p">,</span><span class="s1">&#39;hh24:mi:ss.ff&#39;</span><span class="p">)</span> <span class="n">END</span><span class="p">,</span><span class="n">to_timestamp</span><span class="p">(</span><span class="n">RECV_TIME</span><span class="p">,</span><span class="s1">&#39;hh24:mi:ss.ff&#39;</span><span class="p">)</span> <span class="n">RECV</span>
+<span class="n">FROM</span>
+  <span class="n">BCSS01</span><span class="o">.</span><span class="n">BCSS_JOURNAL_SW</span> <span class="n">partition</span><span class="p">(</span><span class="n">P_20180719</span><span class="p">)</span>
+<span class="n">where</span>
+<span class="n">substr</span><span class="p">(</span><span class="n">tran_time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span><span class="o">&gt;</span><span class="s1">&#39;123000&#39;</span> <span class="ow">and</span>
+<span class="n">substr</span><span class="p">(</span><span class="n">tran_time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span><span class="o">&lt;</span><span class="s1">&#39;125200&#39;</span> <span class="ow">and</span>
+<span class="n">F2</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;6259063493613759&#39;</span><span class="p">,</span> <span class="s1">&#39;6259073348244593&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ttjy">
+<h2>1.2 ttjy<a class="headerlink" href="#ttjy" title="Permalink to this headline">¶</a></h2>
+<p>bhkhkhg。</p>
+</div>
 </div>
 
 
