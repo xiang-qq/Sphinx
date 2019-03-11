@@ -14,4 +14,5 @@ Welcome to xu blog's documentation!
    kuaijie_zhifu
    yinlian
    eiss
+   bsdkuapingzhifu
 
