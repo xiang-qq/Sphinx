@@ -11,7 +11,7 @@
 
 5.2 支付宝新增交易
 --------------------------
-
+  ::
 	select t.tran_code,t.ap_ret_code,t.tran_state,count(1)   
 	from bcss_journal_alipay t where --t.tran_date='20180619'
 	t.tran_code in ('A54605','A54606')                       
@@ -19,7 +19,7 @@
 		  
 5.3 微信新增交易
 ---------------------
-
+  ::
   select t.tran_code,t.ap_ret_code,t.tran_state,count(1)       
   from bcss_journal_wechat t where --t.tran_date='20180619' and
   t.tran_code in ('A53505','A53506')                           
@@ -27,7 +27,7 @@
 
 5.4 间连微信公众号通知交易                                                        
 ----------------------------                                             
-                                                                  
+  ::                                                                
   select t.tran_code,t.ap_ret_code,t.tran_state,count(1)         
   from bcss_journal_wechat t where --t.tran_date='20180619' and  
   t.tran_code in ('A76504','A76506')                             
@@ -35,7 +35,7 @@
   
 5.5 轮询交易是否触发                                                     
 ---------------------                                                                                                    
-                                                       
+  ::                                                     
   select t.notify_flag, t.total_times, t.remain_times          
   from bcss_journal_alipay t where --t.tran_date='20180619' and
   t.tran_code = 'A54605';                                      
@@ -54,7 +54,7 @@
   
 5.6 本次新增交易，关联到轮询交易                                              
 ----------------------------------                               
-                                                    
+  ::                                                  
   select t2.tran_code,t2.ap_ret_code,t2.tran_state,count(1)  
   from bcss_journal_alipay t1, bcss_journal_alipay t2        
   where t1.tran_code='A54605' and t2.tran_code='A6X601'      

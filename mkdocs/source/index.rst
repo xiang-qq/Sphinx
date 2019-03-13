@@ -15,4 +15,7 @@ Welcome to xu blog's documentation!
    yinlian
    eiss
    bsdkuapingzhifu
+   301yiyuan
+   binfenshenghuo
+   chaxun
 
