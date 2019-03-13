@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第八章 缤纷生活跨行还款-自动还款巡查与应急手册 &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="第九章 常用查询语句" href="chaxun.html" />
+    <link rel="prev" title="第七章 301医院项目" href="301yiyuan.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Xu's BLOG
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="jcb.html">第一章 JCB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kuaijie_zhifu.html">第二章 快捷支付</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yinlian.html">第三章 银联</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eiss.html">第三章 EISS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bsdkuapingzhifu.html">第五章 北师大跨屏支付</a></li>
+<li class="toctree-l1"><a class="reference internal" href="301yiyuan.html">第七章 301医院项目</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第八章 缤纷生活跨行还款-自动还款巡查与应急手册</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">8.1 每日巡查方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">8.2 应急处理方法</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chaxun.html">第九章 常用查询语句</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Xu's BLOG</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>第八章 缤纷生活跨行还款-自动还款巡查与应急手册</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/binfenshenghuo.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第八章 缤纷生活跨行还款-自动还款巡查与应急手册<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>8.1 每日巡查方法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>1、连接数据库执行下列查询语句判断是否有当日数据:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">BCSS_DEBIT_BUSINESS</span>
+<span class="n">where</span> <span class="n">req_respcode</span> <span class="o">&lt;&gt;</span> <span class="s1">&#39;00&#39;</span>
+<span class="ow">or</span> <span class="n">inq_respcode</span> <span class="o">&lt;&gt;</span> <span class="s1">&#39;00&#39;</span>
+<span class="n">order</span> <span class="n">by</span> <span class="n">file_insert_time</span> <span class="n">desc</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>如果有当日错误数据，请根据【req_respcode】和【inq_respcode】值判断处理方法，
+目前已知错误状况及处理办法:</p>
+<p>①req_respcode=’00’并且inq_respcode=’37’请参照：8.2节【处理方法1】:</p>
+<dl class="docutils">
+<dt>2、登录应用节点1，进入如下目录:</dt>
+<dd>/bcss/debit/load/</dd>
+</dl>
+<p>查看上路径下是否有文件，如果没有，正常；如果有，隔半小时后再次查询,</p>
+<p>如果还有文件则为异常情况，请参照：8.2节【处理方法2】;</p>
+<dl class="docutils">
+<dt>3、登录应用节点1，进入如下目录：</dt>
+<dd>/bcss/debit/up/</dd>
+</dl>
+<p>查看上路径下是否有文件，如果没有，正常；如果有，隔半小时后再次查询，
+如果还有文件则为异常情况，请参照：8.2节【处理方法2】。</p>
+</div>
+<div class="section" id="id3">
+<h2>8.2 应急处理方法<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>【处理方法1】；
+此问题为银联未返回代付结果文件，请按如下流程处理：</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>1请联系银联同事，要到代付结果文件，文件名称格式示例：</dt>
+<dd>DK01040000000000000000000201801180100O.txt
+将日期（YYYYMMDD）部分作修改，如果作业时间段在中午12点~24点之间，
+将日期修改为明天的日期，其他时间段修改为当日日期；
+日期后面4位为文件的批次号，此批次号当日唯一，建议修改为0100、0101等，以保证唯一性。</dd>
+</dl>
+<p>2打开代付文件，在第一行增加文件头，文件头内容为：R000000成功[0000000]
+3将文件编码格式修改为u8-uni。（可用UE等文件编辑工具修改）
+4将文件以bin形式上传到/bcss/debit/up/目录下。</p>
+</div></blockquote>
+<p>【处理方法2】：
+此问题为代付程序为成功执行，请按如下流程处理：</p>
+<blockquote>
+<div><p>1请查看/bcss/debit/logs/目录下最新的log文件，如发现报错信息，请联系bcss相关人员处理。
+2如果上记log文件中违法先异常，请重启代付程序并上报。
+代付程序重启方法为执行下面两个命令</p>
+<blockquote>
+<div>sh /bcss/ap/batch/BcssDebitStop.sh
+sh /bcss/ap/batch/BcssDebitStart.sh</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="chaxun.html" class="btn btn-neutral float-right" title="第九章 常用查询语句" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="301yiyuan.html" class="btn btn-neutral" title="第七章 301医院项目" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, 小许同学.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

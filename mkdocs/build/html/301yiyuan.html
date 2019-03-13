@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>第七章 301医院项目 &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="第八章 缤纷生活跨行还款-自动还款巡查与应急手册" href="binfenshenghuo.html" />
+    <link rel="prev" title="第五章 北师大跨屏支付" href="bsdkuapingzhifu.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Xu's BLOG
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="jcb.html">第一章 JCB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kuaijie_zhifu.html">第二章 快捷支付</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yinlian.html">第三章 银联</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eiss.html">第三章 EISS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bsdkuapingzhifu.html">第五章 北师大跨屏支付</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第七章 301医院项目</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">7.1 概述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">7.2 微信新增交易码与路径</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">7.3 微信新增交易查询语句</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">7.4 支付宝新增交易码与路径</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">7.5 支付宝新增交易查询语句</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="binfenshenghuo.html">第八章 缤纷生活跨行还款-自动还款巡查与应急手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chaxun.html">第九章 常用查询语句</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Xu's BLOG</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>第七章 301医院项目</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/301yiyuan.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>第七章 301医院项目<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>7.1 概述<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>301医院项目主要用于北京分行和301医院合作，
+使用301医院APP进行挂号、缴费（微信、支付宝）。</p>
+</div>
+<div class="section" id="id3">
+<h2>7.2 微信新增交易码与路径<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>微信预下单-A33501、微信关闭订单-A33502、微信查询订单-A33503、微信申请退款-A33504
+交易路径：BIBP-&gt;BCSS-&gt;微信,直连模式，X810后变为间连，交易码也会改变</p>
+</div>
+<div class="section" id="id4">
+<h2>7.3 微信新增交易查询语句<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>1、      查询北分发起的交易（下单、查询、关闭）是否成功:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">tran_date</span><span class="p">,</span><span class="n">tran_time</span><span class="p">,</span><span class="n">tran_state</span><span class="p">,</span><span class="n">ap_ret_code</span><span class="p">,</span>
+<span class="n">ap_ret_msg</span><span class="p">,</span><span class="n">return_code</span><span class="p">,</span><span class="n">result_code</span><span class="p">,</span><span class="n">err_code</span>
+<span class="kn">from</span> <span class="nn">bcss_journal_wechat</span>
+<span class="n">where</span> <span class="n">tran_date</span><span class="o">=</span><span class="s1">&#39;20180910&#39;</span>
+<span class="ow">and</span> <span class="n">tran_code</span><span class="o">=</span><span class="s1">&#39;A33501&#39;</span>
+<span class="ow">and</span> <span class="n">out_trade_no</span><span class="o">=</span><span class="s1">&#39;123456666&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>根据商户订单号查询，AP_RET_CODE为’0000000’代表BCSS处理成功，如想看业务是否成功，
+则看return_code和result_code两个字段值都应为’SUCCESS；</p>
+<p>2、      查询北分发起的退货交易是否成功:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">tran_date</span><span class="p">,</span><span class="n">tran_time</span><span class="p">,</span><span class="n">tran_state</span><span class="p">,</span><span class="n">ap_ret_code</span><span class="p">,</span>
+<span class="n">ap_ret_msg</span><span class="p">,</span><span class="n">return_code</span><span class="p">,</span><span class="n">result_code</span><span class="p">,</span><span class="n">err_code</span>
+<span class="kn">from</span> <span class="nn">bcss_journal_wechat</span> <span class="n">where</span> <span class="n">tran_date</span><span class="o">=</span><span class="s1">&#39;20180910&#39;</span>
+<span class="ow">and</span> <span class="n">tran_code</span><span class="o">=</span><span class="s1">&#39;A33504&#39;</span>
+<span class="ow">and</span> <span class="n">out_refund_no</span><span class="o">=</span><span class="s1">&#39;123456666&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>根据商户退款单号查询，AP_RET_CODE为’0000000’代表BCSS处理成功，如想看业务是否成功，
+则看return_code和result_code两个字段值都应为’SUCCESS’;</p>
+<p>3、      按照错误码统计微信交易信息:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">tran_code</span><span class="p">,</span><span class="n">ap_ret_code</span><span class="p">,</span><span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">bcss_journal_wechat</span>
+<span class="n">where</span> <span class="n">tran_date</span><span class="o">=</span><span class="s1">&#39;20180910&#39;</span>
+<span class="ow">and</span> <span class="n">tran_code</span> <span class="ow">in</span><span class="p">(</span><span class="s1">&#39;A33501&#39;</span><span class="p">,</span><span class="s1">&#39;A33502&#39;</span><span class="p">,</span><span class="s1">&#39;A33503&#39;</span><span class="p">,</span><span class="s1">&#39;a33504&#39;</span><span class="p">)</span>
+<span class="n">group</span> <span class="n">by</span> <span class="n">tran_code</span><span class="p">,</span><span class="n">ap_ret_code</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>7.4 支付宝新增交易码与路径<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>支付宝查询订单-A34601、支付宝撤销交易-A34602、支付宝退款交易-A34603
+交易路径：BIBP-&gt;BCSS-&gt;支付宝,直连模式</p>
+</div>
+<div class="section" id="id6">
+<h2>7.5 支付宝新增交易查询语句<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>1、      查询北分发起的交易是否成功:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">tran_date</span><span class="p">,</span><span class="n">tran_time</span><span class="p">,</span><span class="n">tran_state</span><span class="p">,</span><span class="n">ap_ret_code</span><span class="p">,</span>
+<span class="n">gateway_code</span><span class="p">,</span><span class="n">gateway_msg</span><span class="p">,</span><span class="n">sub_code</span><span class="p">,</span><span class="n">sub_msg</span>
+<span class="kn">from</span> <span class="nn">bcss_journal_alipay</span>
+<span class="n">where</span> <span class="n">tran_date</span><span class="o">=</span><span class="s1">&#39;20180910&#39;</span>
+<span class="ow">and</span>  <span class="n">tran_code</span><span class="o">=</span><span class="s1">&#39;A34601&#39;</span>
+<span class="ow">and</span> <span class="n">out_trade_no</span><span class="o">=</span><span class="s1">&#39;122333&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>根据商户退款单号查询，AP_RET_CODE为’0000000’代表BCSS处理成功，如想看业务是否成功，
+则看gateway_code应为10000，其他错误再看sub_code和sub_msg</p>
+<p>2、      按照错误码统计支付宝交易信息:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">tran_code</span><span class="p">,</span><span class="n">ap_ret_code</span><span class="p">,</span><span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">bcss_journal_alipay</span>
+<span class="n">where</span> <span class="n">tran_date</span><span class="o">=</span><span class="s1">&#39;20180910&#39;</span>
+<span class="ow">and</span> <span class="n">tran_code</span>
+<span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;A34601&#39;</span><span class="p">,</span><span class="s1">&#39;A34602&#39;</span><span class="p">,</span><span class="s1">&#39;A34603&#39;</span><span class="p">)</span>
+<span class="n">group</span> <span class="n">by</span> <span class="n">tran_code</span><span class="p">,</span><span class="n">ap_ret_code</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>可以将ap_ret_code换成gateway_code查询业务成功情况。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="binfenshenghuo.html" class="btn btn-neutral float-right" title="第八章 缤纷生活跨行还款-自动还款巡查与应急手册" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bsdkuapingzhifu.html" class="btn btn-neutral" title="第五章 北师大跨屏支付" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, 小许同学.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
+  <title>第九章 常用查询语句 &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
   
 
   
@@ -27,8 +26,9 @@
 
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="第八章 缤纷生活跨行还款-自动还款巡查与应急手册" href="binfenshenghuo.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -82,7 +82,7 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="jcb.html">第一章 JCB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kuaijie_zhifu.html">第二章 快捷支付</a></li>
 <li class="toctree-l1"><a class="reference internal" href="yinlian.html">第三章 银联</a></li>
@@ -90,7 +90,13 @@
 <li class="toctree-l1"><a class="reference internal" href="bsdkuapingzhifu.html">第五章 北师大跨屏支付</a></li>
 <li class="toctree-l1"><a class="reference internal" href="301yiyuan.html">第七章 301医院项目</a></li>
 <li class="toctree-l1"><a class="reference internal" href="binfenshenghuo.html">第八章 缤纷生活跨行还款-自动还款巡查与应急手册</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chaxun.html">第九章 常用查询语句</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第九章 常用查询语句</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">9.1 查询微信交易</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">9.2 查询支付宝交易</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#app">9.3 统一APP开户及结果查询</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">9.4 统一APP查询账单查询</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -136,12 +142,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+      <li>第九章 常用查询语句</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/chaxun.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -153,11 +161,59 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="id1">
+<h1>第九章 常用查询语句<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>9.1 查询微信交易<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>常用查询语句:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>select appid,mch_id,SUB_APPID,SUB_MCH_ID,
+OUT_TRADE_NO,TOTAL_FEE,RETURN_CODE ,
+RETURN_MSG,RESULT_CODE,ERR_CODE,ERR_CODE_DES,
+TRADE_STATE,OUT_REFUND_NO
+from bcss_journal_wechat
+where tran_date=&#39;20171124&#39;
+and tran_code=’A43051’;
+</pre></div>
+</div>
+<p>说明：RETURN_CODE取值为SUCCESS/FAIL,代表通讯返回码，RETURN_MSG代表通讯错误返回信息
+RETURN_CODE为成功时，才会有RESULT_CODE,ERR_CODE, ERR_CODE_DES字段，
+其中RESULT_CODE为SUCCESS时，ERR_CODE, ERR_CODE_DES无值，为FAIL时有值，代表业务失败
+TRADE_STATE代表具体的业务处理结果，参见数据字典。</p>
+</div>
+<div class="section" id="id3">
+<h2>9.2 查询支付宝交易<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>常用查询语句:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>select app_id, out_trade_no,trade_no,
+refund_amount,gateway_code,gateway_msg,
+sub_code,sub_msg
+from bcss_journal_alipay
+where tran_date=&#39;20171124&#39;
+and tran_code=’A50801’;
+</pre></div>
+</div>
+<p>说明：code为10000,代表交易成功，sub_code,sub_msg都为空
+code不为10000时，代表交易失败，具体的交易错误码和信息，参考sub_code,sub_msg值。</p>
+</div>
+<div class="section" id="app">
+<h2>9.3 统一APP开户及结果查询<a class="headerlink" href="#app" title="Permalink to this headline">¶</a></h2>
+<p>常用查询语句:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>select query_id,recv_pkg
+from bcss_journal_app
+where tran_date=’20171218’
+and tran_code=’A9X701’
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>9.4 统一APP查询账单查询<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>常用查询语句:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>select f2,f48,f39,ap_ret_code,ap_ret_msg
+from bcss_journal_sw
+where tran_date=’20171218’
+and tran_code=’C66X01’
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -165,6 +221,13 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="binfenshenghuo.html" class="btn btn-neutral" title="第八章 缤纷生活跨行还款-自动还款巡查与应急手册" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

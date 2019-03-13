@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="第七章 301医院项目" href="301.html" />
     <link rel="prev" title="第三章 EISS" href="eiss.html" /> 
 
   
@@ -96,6 +97,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#id7">5.6 本次新增交易，关联到轮询交易</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="301.html">第七章 301医院项目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binfenshenghuo.html">第八章 缤纷生活跨行还款-自动还款巡查与应急手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chaxun.html">第九章 常用查询语句</a></li>
 </ul>
 
             
@@ -171,15 +175,20 @@
 <div class="section" id="id3">
 <h2>5.2 支付宝新增交易<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>select t.tran_code,t.ap_ret_code,t.tran_state,count(1)
+<div><dl class="docutils">
+<dt>::</dt>
+<dd>select t.tran_code,t.ap_ret_code,t.tran_state,count(1)
 from bcss_journal_alipay t where –t.tran_date=‘20180619’
 t.tran_code in (‘A54605’,’A54606’)
-group by t.tran_code,t.ap_ret_code,t.tran_state;</div></blockquote>
+group by t.tran_code,t.ap_ret_code,t.tran_state;</dd>
+</dl>
+</div></blockquote>
 </div>
 <div class="section" id="id4">
 <h2>5.3 微信新增交易<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>select t.tran_code,t.ap_ret_code,t.tran_state,count(1)
+<div>::
+select t.tran_code,t.ap_ret_code,t.tran_state,count(1)
 from bcss_journal_wechat t where –t.tran_date=‘20180619’ and
 t.tran_code in (‘A53505’,’A53506’)
 group by t.tran_code,t.ap_ret_code,t.tran_state;</div></blockquote>
@@ -187,7 +196,8 @@ group by t.tran_code,t.ap_ret_code,t.tran_state;</div></blockquote>
 <div class="section" id="id5">
 <h2>5.4 间连微信公众号通知交易<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div>select t.tran_code,t.ap_ret_code,t.tran_state,count(1)
+<div>::
+select t.tran_code,t.ap_ret_code,t.tran_state,count(1)
 from bcss_journal_wechat t where –t.tran_date=‘20180619’ and
 t.tran_code in (‘A76504’,’A76506’)
 group by t.tran_code,t.ap_ret_code,t.tran_state;</div></blockquote>
@@ -195,7 +205,8 @@ group by t.tran_code,t.ap_ret_code,t.tran_state;</div></blockquote>
 <div class="section" id="id6">
 <h2>5.5 轮询交易是否触发<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>select t.notify_flag, t.total_times, t.remain_times
+<div><p>::
+select t.notify_flag, t.total_times, t.remain_times
 from bcss_journal_alipay t where –t.tran_date=‘20180619’ and
 t.tran_code = ‘A54605’;
 select t.notify_flag, t.total_times, t.remain_times
@@ -214,7 +225,8 @@ group by t.tran_code,t.ap_ret_code,t.tran_state;</p>
 <div class="section" id="id7">
 <h2>5.6 本次新增交易，关联到轮询交易<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>select t2.tran_code,t2.ap_ret_code,t2.tran_state,count(1)
+<div><p>::
+select t2.tran_code,t2.ap_ret_code,t2.tran_state,count(1)
 from bcss_journal_alipay t1, bcss_journal_alipay t2
 where t1.tran_code=’A54605’ and t2.tran_code=’A6X601’
 and t1.tran_date = t2.tran_date
@@ -237,6 +249,8 @@ group by t2.tran_code,t2.ap_ret_code,t2.tran_state;</p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="301.html" class="btn btn-neutral float-right" title="第七章 301医院项目" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="eiss.html" class="btn btn-neutral" title="第三章 EISS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
