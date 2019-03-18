@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>第五章 北师大跨屏支付 &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
+  <title>第五章 跨屏支付 &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="第七章 301医院项目" href="301.html" />
+    <link rel="next" title="第七章 301医院项目" href="301yiyuan.html" />
     <link rel="prev" title="第三章 EISS" href="eiss.html" /> 
 
   
@@ -88,18 +88,21 @@
 <li class="toctree-l1"><a class="reference internal" href="kuaijie_zhifu.html">第二章 快捷支付</a></li>
 <li class="toctree-l1"><a class="reference internal" href="yinlian.html">第三章 银联</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eiss.html">第三章 EISS</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">第五章 北师大跨屏支付</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">5.1 本次新增交易</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第五章 跨屏支付</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">5.1 主要交易</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">5.2 支付宝新增交易</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">5.3 微信新增交易</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">5.4 间连微信公众号通知交易</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id6">5.5 轮询交易是否触发</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id7">5.6 本次新增交易，关联到轮询交易</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#x93">5.6 X93新增</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="301.html">第七章 301医院项目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="301yiyuan.html">第七章 301医院项目</a></li>
 <li class="toctree-l1"><a class="reference internal" href="binfenshenghuo.html">第八章 缤纷生活跨行还款-自动还款巡查与应急手册</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erweima.html">第九章 常用查询语句</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chaxun.html">第九章 常用查询语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="picijieshao.html">第X章 批次投产内容介绍</a></li>
 </ul>
 
             
@@ -145,7 +148,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>第五章 北师大跨屏支付</li>
+      <li>第五章 跨屏支付</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -165,9 +168,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>第五章 北师大跨屏支付<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>第五章 跨屏支付<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2>5.1 本次新增交易<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>5.1 主要交易<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>支付宝下单：A54605  支付宝查询：A54606
 微信下单：A53505    微信查询：A53506
 本次修改交易流程：A76504/A76506 间连微信公众号通知交易</p>
@@ -240,6 +243,44 @@ and t1.out_trade_no = t2.out_trade_no
 group by t2.tran_code,t2.ap_ret_code,t2.tran_state;</p>
 </div></blockquote>
 </div>
+<div class="section" id="x93">
+<h2>5.6 X93新增<a class="headerlink" href="#x93" title="Permalink to this headline">¶</a></h2>
+<p>查询语句
+按日期查询:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">bcss01.BCSS_JOURNAL_ALIPAY</span>
+<span class="n">where</span> <span class="n">tran_date</span> <span class="o">=</span> <span class="s1">&#39;20190306&#39;</span> <span class="ow">and</span>
+<span class="n">tran_code</span>  <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;AA4601&#39;</span><span class="p">,</span><span class="s1">&#39;AA4602&#39;</span><span class="p">,</span><span class="s1">&#39;AA4603&#39;</span><span class="p">,</span><span class="s1">&#39;AA4604&#39;</span><span class="p">,</span><span class="s1">&#39;A6X603&#39;</span><span class="p">,</span><span class="s1">&#39;A86603&#39;</span><span class="p">,</span><span class="s1">&#39;A86604&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>根据商户订单号查询日志:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">bcss01.BCSS_JOURNAL_ALIPAY</span>
+<span class="n">where</span> <span class="n">out_trade_no</span> <span class="o">=</span><span class="s1">&#39;signz8025201251396161&#39;</span>
+<span class="n">order</span> <span class="n">by</span> <span class="n">tran_date</span><span class="p">,</span><span class="n">tran_time</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>根据退款请求号查询退款日志:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">bcss01.BCSS_JOURNAL_ALIPAY</span>
+<span class="n">where</span> <span class="n">out_request_no</span> <span class="o">=</span><span class="s1">&#39;tdbr00test02&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>根据退款请求号、退款金额查询申请退款日志:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">bcss01.BCSS_JOURNAL_ALIPAY</span>
+<span class="n">where</span> <span class="n">out_request_no</span> <span class="o">=</span><span class="s1">&#39;tdbr00test02&#39;</span>
+<span class="ow">and</span> <span class="n">refund_amount</span><span class="o">=</span><span class="s1">&#39;0.01&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>交易码对照表:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>交易名称                              外部交易码       内部交易码
+银联-支付宝下单                            A600000018        AA4601
+银联-支付宝订单查询                      A600000019    AA4602
+银联-支付宝退款                            A600000012        AA4603
+银联-支付宝退款查询                      A600000013    AA4604
+银联-支付宝订单查询通知（BCSS发起）    A6X603            A6X603
+银联-支付宝异步结果通知（支付宝发起）   A600000014      A86603
+银联-支付宝订单查询通知（通知触发）      无             A86604
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -250,7 +291,7 @@ group by t2.tran_code,t2.ap_ret_code,t2.tran_state;</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="301.html" class="btn btn-neutral float-right" title="第七章 301医院项目" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="301yiyuan.html" class="btn btn-neutral float-right" title="第七章 301医院项目" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="eiss.html" class="btn btn-neutral" title="第三章 EISS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

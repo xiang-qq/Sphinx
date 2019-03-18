@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>第十章 常用查询语句 &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
+  <title>第九章 二维码 &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="第X章 批次投产内容介绍" href="picijieshao.html" />
-    <link rel="prev" title="第九章 二维码" href="erweima.html" /> 
+    <link rel="next" title="第十章 常用查询语句" href="chaxun.html" />
+    <link rel="prev" title="第八章 缤纷生活跨行还款-自动还款巡查与应急手册" href="binfenshenghuo.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -91,14 +91,11 @@
 <li class="toctree-l1"><a class="reference internal" href="bsdkuapingzhifu.html">第五章 跨屏支付</a></li>
 <li class="toctree-l1"><a class="reference internal" href="301yiyuan.html">第七章 301医院项目</a></li>
 <li class="toctree-l1"><a class="reference internal" href="binfenshenghuo.html">第八章 缤纷生活跨行还款-自动还款巡查与应急手册</a></li>
-<li class="toctree-l1"><a class="reference internal" href="erweima.html">第九章 二维码</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">第十章 常用查询语句</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">10.1 查询微信交易</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">10.2 查询支付宝交易</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#app">10.3 统一APP开户及结果查询</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">10.4 统一APP查询账单查询</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第九章 二维码</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#x93">9.1 X93新增</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="chaxun.html">第十章 常用查询语句</a></li>
 <li class="toctree-l1"><a class="reference internal" href="picijieshao.html">第X章 批次投产内容介绍</a></li>
 </ul>
 
@@ -145,13 +142,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>第十章 常用查询语句</li>
+      <li>第九章 二维码</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/chaxun.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/erweima.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -165,55 +162,33 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>第十章 常用查询语句<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
-<h2>10.1 查询微信交易<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>常用查询语句:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>select appid,mch_id,SUB_APPID,SUB_MCH_ID,
-OUT_TRADE_NO,TOTAL_FEE,RETURN_CODE ,
-RETURN_MSG,RESULT_CODE,ERR_CODE,ERR_CODE_DES,
-TRADE_STATE,OUT_REFUND_NO
-from bcss_journal_wechat
-where tran_date=&#39;20171124&#39;
-and tran_code=’A43051’;
+<h1>第九章 二维码<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="x93">
+<h2>9.1 X93新增<a class="headerlink" href="#x93" title="Permalink to this headline">¶</a></h2>
+<p>按交易码查询:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span>  <span class="o">*</span> <span class="n">FROM</span> <span class="n">bcss01</span><span class="o">.</span><span class="n">BCSS_JOURNAL_TRAN</span>
+<span class="n">WHERE</span> <span class="n">TRAN_DATE</span><span class="o">=</span><span class="s1">&#39;20190307&#39;</span> <span class="n">AND</span>
+<span class="n">TRAN_CODE</span> <span class="n">IN</span> <span class="p">(</span><span class="s1">&#39;A01312&#39;</span><span class="p">,</span><span class="s1">&#39;A10312&#39;</span><span class="p">,</span><span class="s1">&#39;A10236&#39;</span><span class="p">,</span><span class="s1">&#39;A10313&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>说明：RETURN_CODE取值为SUCCESS/FAIL,代表通讯返回码，RETURN_MSG代表通讯错误返回信息
-RETURN_CODE为成功时，才会有RESULT_CODE,ERR_CODE, ERR_CODE_DES字段，
-其中RESULT_CODE为SUCCESS时，ERR_CODE, ERR_CODE_DES无值，为FAIL时有值，代表业务失败
-TRADE_STATE代表具体的业务处理结果，参见数据字典。</p>
-</div>
-<div class="section" id="id3">
-<h2>10.2 查询支付宝交易<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>常用查询语句:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>select app_id, out_trade_no,trade_no,
-refund_amount,gateway_code,gateway_msg,
-sub_code,sub_msg
-from bcss_journal_alipay
-where tran_date=&#39;20171124&#39;
-and tran_code=’A50801’;
+<p>主扫查询订单(它代本)（A01312）验证:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">dump</span><span class="p">(</span><span class="n">RECV_PKG</span><span class="p">,</span><span class="mi">16</span><span class="p">),</span><span class="n">REPLY_PKG</span> <span class="kn">from</span> <span class="nn">bcss01.BCSS_JOURNAL_TRAN</span> <span class="n">where</span>
+<span class="n">TRAN_DATE</span><span class="o">=</span><span class="s1">&#39;20190307&#39;</span> <span class="n">AND</span> <span class="n">TRAN_CODE</span><span class="o">=</span><span class="s1">&#39;A01312&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>说明：code为10000,代表交易成功，sub_code,sub_msg都为空
-code不为10000时，代表交易失败，具体的交易错误码和信息，参考sub_code,sub_msg值。</p>
-</div>
-<div class="section" id="app">
-<h2>10.3 统一APP开户及结果查询<a class="headerlink" href="#app" title="Permalink to this headline">¶</a></h2>
-<p>常用查询语句:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>select query_id,recv_pkg
-from bcss_journal_app
-where tran_date=’20171218’
-and tran_code=’A9X701’
+<p>主扫查询订单（A10312）验证:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">RECV_PKG</span><span class="p">,</span> <span class="n">dump</span><span class="p">(</span><span class="n">REPLY_PKG</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">bcss01.BCSS_JOURNAL_TRAN</span>
+<span class="n">where</span> <span class="n">TRAN_DATE</span><span class="o">=</span><span class="s1">&#39;20190307&#39;</span> <span class="n">AND</span> <span class="n">TRAN_CODE</span><span class="o">=</span><span class="s1">&#39;A10312&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
+<p>C2B消费结果通知（A10236）验证:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">dump</span><span class="p">(</span><span class="n">ACCEPT_PKG</span><span class="p">,</span><span class="mi">16</span><span class="p">),</span><span class="n">SEND_PKG</span> <span class="kn">from</span> <span class="nn">bcss01.BCSS_JOURNAL_TRAN</span>
+<span class="n">where</span> <span class="n">TRAN_DATE</span><span class="o">=</span><span class="s1">&#39;20190307&#39;</span> <span class="n">AND</span> <span class="n">TRAN_CODE</span><span class="o">=</span><span class="s1">&#39;A10236&#39;</span><span class="p">;</span>
+</pre></div>
 </div>
-<div class="section" id="id4">
-<h2>10.4 统一APP查询账单查询<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>常用查询语句:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>select f2,f48,f39,ap_ret_code,ap_ret_msg
-from bcss_journal_sw
-where tran_date=’20171218’
-and tran_code=’C66X01’
+<p>主扫付款(A10313)验证:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">dump</span><span class="p">(</span><span class="n">ACCEPT_PKG</span><span class="p">,</span><span class="mi">16</span><span class="p">),</span><span class="n">SEND_PKG</span> <span class="kn">from</span> <span class="nn">bcss01.BCSS_JOURNAL_TRAN</span>
+<span class="n">where</span> <span class="n">TRAN_DATE</span><span class="o">=</span><span class="s1">&#39;20190307&#39;</span> <span class="n">AND</span> <span class="n">TRAN_CODE</span><span class="o">=</span><span class="s1">&#39;A10313&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -227,10 +202,10 @@ and tran_code=’C66X01’
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="picijieshao.html" class="btn btn-neutral float-right" title="第X章 批次投产内容介绍" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="chaxun.html" class="btn btn-neutral float-right" title="第十章 常用查询语句" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="erweima.html" class="btn btn-neutral" title="第九章 二维码" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="binfenshenghuo.html" class="btn btn-neutral" title="第八章 缤纷生活跨行还款-自动还款巡查与应急手册" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
