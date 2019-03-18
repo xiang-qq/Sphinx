@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>第三章 EISS &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
+  <title>第四章 EISS &mdash; Xu&#39;s BLOG 1.0.0 documentation</title>
   
 
   
@@ -28,7 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="?????? ????" href="yinlian.html" /> 
+    <link rel="next" title="第五章 跨屏支付" href="bsdkuapingzhifu.html" />
+    <link rel="prev" title="第三章 银联" href="yinlian.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -84,13 +85,19 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="jcb.html">第一章 JCB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kuaijie_zhifu.html">?ڶ??? ???֧??</a></li>
-<li class="toctree-l1"><a class="reference internal" href="yinlian.html">?????? ????</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">第三章 EISS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">1.1 查询EISS处理时间</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ttjy">1.2 ttjy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kuaijie_zhifu.html">第二章 快捷支付</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yinlian.html">第三章 银联</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">第四章 EISS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">4.1 查询EISS处理时间</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ttjy">4.2 ttjy</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="bsdkuapingzhifu.html">第五章 跨屏支付</a></li>
+<li class="toctree-l1"><a class="reference internal" href="301yiyuan.html">第七章 301医院项目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binfenshenghuo.html">第八章 缤纷生活跨行还款</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erweima.html">第九章 二维码</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chaxun.html">第十章 常用查询语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="picijieshao.html">第X章 批次投产内容介绍</a></li>
 </ul>
 
             
@@ -136,7 +143,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>第三章 EISS</li>
+      <li>第四章 EISS</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,26 +163,27 @@
            <div itemprop="articleBody">
             
   <div class="section" id="eiss">
-<h1>第三章 EISS<a class="headerlink" href="#eiss" title="Permalink to this headline">¶</a></h1>
+<h1>第四章 EISS<a class="headerlink" href="#eiss" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h2>1.1 查询EISS处理时间<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>4.1 查询EISS处理时间<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>查询条件：某个时间范围内，报BCSS有超时，可查询EISS处理总时长
 查询语句:</p>
-<p>select F2, tran_time,tran_code, extract(second from END-BEGIN), F39, ap_ret_code, ap_ret_msg
-from
-(select F2, tran_time,tran_code, F39, ap_ret_code, ap_ret_msg,
-to_timestamp(SEND_TIME,’hh24:mi:ss.ff’) SEND,  to_timestamp(BEGIN_TIME,’hh24:mi:ss.ff’) BEGIN,
-to_timestamp(END_TIME,’hh24:mi:ss.ff’) END,to_timestamp(RECV_TIME,’hh24:mi:ss.ff’) RECV
-FROM</p>
-<blockquote>
-<div>BCSS01.BCSS_JOURNAL_SW partition(P_20180719)</div></blockquote>
-<p>where
-substr(tran_time, 1, 6)&gt;‘123000’ and
-substr(tran_time, 1, 6)&lt;‘125200’ and
-F2 in (‘6259063493613759’, ‘6259073348244593’);</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">F2</span><span class="p">,</span> <span class="n">tran_time</span><span class="p">,</span><span class="n">tran_code</span><span class="p">,</span> <span class="n">extract</span><span class="p">(</span><span class="n">second</span> <span class="kn">from</span> <span class="nn">END</span><span class="o">-</span><span class="n">BEGIN</span><span class="p">),</span> <span class="n">F39</span><span class="p">,</span> <span class="n">ap_ret_code</span><span class="p">,</span> <span class="n">ap_ret_msg</span>
+<span class="kn">from</span>
+<span class="p">(</span><span class="n">select</span> <span class="n">F2</span><span class="p">,</span> <span class="n">tran_time</span><span class="p">,</span><span class="n">tran_code</span><span class="p">,</span> <span class="n">F39</span><span class="p">,</span> <span class="n">ap_ret_code</span><span class="p">,</span> <span class="n">ap_ret_msg</span><span class="p">,</span>
+<span class="n">to_timestamp</span><span class="p">(</span><span class="n">SEND_TIME</span><span class="p">,</span><span class="s1">&#39;hh24:mi:ss.ff&#39;</span><span class="p">)</span> <span class="n">SEND</span><span class="p">,</span>  <span class="n">to_timestamp</span><span class="p">(</span><span class="n">BEGIN_TIME</span><span class="p">,</span><span class="s1">&#39;hh24:mi:ss.ff&#39;</span><span class="p">)</span> <span class="n">BEGIN</span><span class="p">,</span>
+<span class="n">to_timestamp</span><span class="p">(</span><span class="n">END_TIME</span><span class="p">,</span><span class="s1">&#39;hh24:mi:ss.ff&#39;</span><span class="p">)</span> <span class="n">END</span><span class="p">,</span><span class="n">to_timestamp</span><span class="p">(</span><span class="n">RECV_TIME</span><span class="p">,</span><span class="s1">&#39;hh24:mi:ss.ff&#39;</span><span class="p">)</span> <span class="n">RECV</span>
+<span class="n">FROM</span>
+<span class="n">BCSS01</span><span class="o">.</span><span class="n">BCSS_JOURNAL_SW</span> <span class="n">partition</span><span class="p">(</span><span class="n">P_20180719</span><span class="p">)</span>
+<span class="n">where</span>
+<span class="n">substr</span><span class="p">(</span><span class="n">tran_time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span><span class="o">&gt;</span><span class="s1">&#39;123000&#39;</span> <span class="ow">and</span>
+<span class="n">substr</span><span class="p">(</span><span class="n">tran_time</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span><span class="o">&lt;</span><span class="s1">&#39;125200&#39;</span> <span class="ow">and</span>
+<span class="n">F2</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;6259063493613759&#39;</span><span class="p">,</span> <span class="s1">&#39;6259073348244593&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="ttjy">
-<h2>1.2 ttjy<a class="headerlink" href="#ttjy" title="Permalink to this headline">¶</a></h2>
+<h2>4.2 ttjy<a class="headerlink" href="#ttjy" title="Permalink to this headline">¶</a></h2>
 <p>bhkhkhg。</p>
 </div>
 </div>
@@ -188,8 +196,10 @@ F2 in (‘6259063493613759’, ‘6259073348244593’);</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="bsdkuapingzhifu.html" class="btn btn-neutral float-right" title="第五章 跨屏支付" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="yinlian.html" class="btn btn-neutral" title="?????? ????" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="yinlian.html" class="btn btn-neutral" title="第三章 银联" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

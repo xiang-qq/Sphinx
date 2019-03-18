@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="第九章 常用查询语句" href="chaxun.html" /> 
+    <link rel="prev" title="第十章 常用查询语句" href="chaxun.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -86,12 +86,12 @@
 <li class="toctree-l1"><a class="reference internal" href="jcb.html">第一章 JCB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kuaijie_zhifu.html">第二章 快捷支付</a></li>
 <li class="toctree-l1"><a class="reference internal" href="yinlian.html">第三章 银联</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eiss.html">第三章 EISS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bsdkuapingzhifu.html">第五章 北师大跨屏支付</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eiss.html">第四章 EISS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bsdkuapingzhifu.html">第五章 跨屏支付</a></li>
 <li class="toctree-l1"><a class="reference internal" href="301yiyuan.html">第七章 301医院项目</a></li>
-<li class="toctree-l1"><a class="reference internal" href="binfenshenghuo.html">第八章 缤纷生活跨行还款-自动还款巡查与应急手册</a></li>
-<li class="toctree-l1"><a class="reference internal" href="erweima.html">第九章 常用查询语句</a></li>
-<li class="toctree-l1"><a class="reference internal" href="chaxun.html">第九章 常用查询语句</a></li>
+<li class="toctree-l1"><a class="reference internal" href="binfenshenghuo.html">第八章 缤纷生活跨行还款</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erweima.html">第九章 二维码</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chaxun.html">第十章 常用查询语句</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">第X章 批次投产内容介绍</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#x-1-x93">x.1 X93</a></li>
 </ul>
@@ -164,8 +164,8 @@
 <h1>第X章 批次投产内容介绍<a class="headerlink" href="#x" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="x-1-x93">
 <h2>x.1 X93<a class="headerlink" href="#x-1-x93" title="Permalink to this headline">¶</a></h2>
-<p>1)M-201811-82983跨屏支付：刘云翔
-功能点：
+<p>1)M-201811-82983跨屏支付：刘云翔</p>
+<p>功能点：
 a,新增与IPPS之间的银联-支付宝的4支交易：下单交易、交易状态查询交易、退款交易、退款查询交易
 b,将下单交易的异步通知推送给IPPS
 c,修改轮询交易，将从银联查询到的结果返回IPPS
@@ -174,15 +174,15 @@ d,新增主扫收款查询交易，支持IPPS查询使用银联APP或他行APP�
 <dt>风险点：</dt>
 <dd>无</dd>
 </dl>
-<p>2)M-201812-86092新一代网络金融事中风控项目：刘云翔
-功能点：
+<p>2)M-201812-86092新一代网络金融事中风控项目：刘云翔</p>
+<p>功能点：
 a,将银联上送的32域受理机构代码发送给风控，风控用于判断境内外交易</p>
 <dl class="docutils">
 <dt>风险点：</dt>
 <dd>无</dd>
 </dl>
-<p>3)M-201812-84824我行收单向账户管理方传送条码属性标识的需求[第1期]：何辛卫
-功能点：
+<p>3)M-201812-84824我行收单向账户管理方传送条码属性标识的需求[第1期]：何辛卫</p>
+<p>功能点：
 a, 银联–&gt;BCSS–&gt;MCIS–&gt;ICCD   的主扫查询订单（它代本）交易，BCSS将ICCD返回的qrCodeType字段返回给银联。
 【A01312—主扫查询订单(它代本)】–ICCD返回报文新增、银联返回报文新增
 b,      ICCD—&gt;MCIS–&gt;BCSS–&gt;银联  的主扫查询订单交易，BCSS把银联返回的qrCodeType字段返回给ICCD。
@@ -191,17 +191,19 @@ b,      ICCD—&gt;MCIS–&gt;BCSS–&gt;银联  的主扫查询订单交易，B
 <dt>风险点：</dt>
 <dd>如果MCIS和BCSS产品投产生效时间不一致，会导致解析报文报错。</dd>
 </dl>
-<p>4)M-201812-85331信用卡二维码支付产品系统变更需求[第1期]：何辛卫
-功能点：
+<p>4)M-201812-85331信用卡二维码支付产品系统变更需求[第1期]：何辛卫</p>
+<p>功能点：
 a, ICCD—&gt;MCIS–&gt;BCSS–&gt;银联  的C2B消费结果通知，BCSS将ICCD上送的authIdRespCd字段上送给银联。
 【A10236—C2B消费结果通知】—银联上送报文新增
 b, ICCD—&gt;MCIS–&gt;BCSS–&gt;银联  的主扫付款，BCSS将ICCD上送的authIdRespCd字段上送给银联。
 【A10313—主扫付款】—银联上送报文新增</p>
 <p>风险点：
 无</p>
-<p>5,M-201812-85115：DMS网联识别与展现维护需求变更[第1期]，马新乐
-修改点：修改DMS生成文本的格式，每条长度由500改为515，
-风险点，需要在定时触发生成DMS文本之前投产，以保证生成新格式的DMS文本</p>
+<p>5,M-201812-85115：DMS网联识别与展现维护需求变更[第1期]，马新乐</p>
+<p>功能点：
+修改DMS生成文本的格式，每条长度由500改为515，</p>
+<p>风险点：
+需要在定时触发生成DMS文本之前投产，以保证生成新格式的DMS文本</p>
 </div>
 </div>
 
@@ -214,7 +216,7 @@ b, ICCD—&gt;MCIS–&gt;BCSS–&gt;银联  的主扫付款，BCSS将ICCD上送�
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="chaxun.html" class="btn btn-neutral" title="第九章 常用查询语句" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="chaxun.html" class="btn btn-neutral" title="第十章 常用查询语句" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
