@@ -17,5 +17,7 @@ Welcome to xu blog's documentation!
    bsdkuapingzhifu
    301yiyuan
    binfenshenghuo
+   erweima
    chaxun
+   picijieshao
 
